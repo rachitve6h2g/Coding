@@ -26,7 +26,7 @@ int main() {
 
   // Take the input and calculate the total side by side.
   for (int i = 0; i < total_items; i++) {
-    printf("Enter the name of item no. %d", i + 1);
+    printf("Enter the name of item no. %d: ", i + 1);
     fgets(items[i].name, 50, stdin);
     items[i].name[strcspn(items[i].name, "\n")] = 0;
 
@@ -40,14 +40,15 @@ int main() {
 
     items[i].total_amt = items[i].price_per_unit * items[i].quantity;
     total_bill += items[i].total_amt; // calculate the total bill.
+    printf("\n");
   }
 
   // Print the bill
   printf("\n\n");
   printf("\tItem \tQuantity \tPrice \tAmount\n");
   for (int i = 0; i < total_items; i++)
-    printf("\n\t%s \t %d \t%.2f \t%.2f\n", items[i].name, items[i].quantity,
-           items[i].price_per_unit, items[i].total_amt);
+    printf("\n\t%s \t %-10d \t%-10.2f \t%-5.2f\n", items[i].name,
+           items[i].quantity, items[i].price_per_unit, items[i].total_amt);
 
   printf("\nTotal bill amount: %.2f\n", total_bill);
   return 0;
